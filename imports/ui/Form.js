@@ -15,10 +15,12 @@ class Form extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="item">
         <form onSubmit={this.handleSubmit}>
           <input type="text" ref="name" placeholder="Player Name" />
-          <button onClick={this.handleSubmit}>Add Player</button>
+          <button className="button" onClick={this.handleSubmit}>
+            Add Player
+          </button>
         </form>
       </div>
     );

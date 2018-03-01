@@ -8,17 +8,25 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1>Score Keep</h1>
+        <div className="title-bar">
+          <div className="wrapper">
+            <h1>Score Keep</h1>
+          </div>
+        </div>
         <div>
-          <Form />
-          {this.props.players.length === 0 ? (
-            <h1>Add new player to begin.</h1>
-          ) : (
-            ''
-          )}
-          {this.props.players.map(player => {
-            return <PlayerList player={player} key={player._id} />;
-          })}
+          <div className="wrapper">
+            <Form />
+            {this.props.players.length === 0 ? (
+              <div className="item">
+                <p className="item__message">Add new player to begin.</p>
+              </div>
+            ) : (
+              ''
+            )}
+            {this.props.players.map(player => {
+              return <PlayerList player={player} key={player._id} />;
+            })}
+          </div>
         </div>
       </div>
     );

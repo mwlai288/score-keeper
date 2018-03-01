@@ -14,12 +14,18 @@ const PlayerList = ({ player }) => {
     Players.update({ _id: player._id }, { $inc: { score: -1 } });
   };
   return (
-    <div>
+    <div className="item">
       <p>
         {player.name} has {player.score} point(s).
-        <button onClick={this.handleIncrement}>+1</button>
-        <button onClick={this.handleDecrement}>-1</button>
-        <button onClick={this.handleDelete}>X</button>
+        <button className="button button--round" onClick={this.handleIncrement}>
+          +1
+        </button>
+        <button className="button button--round" onClick={this.handleDecrement}>
+          -1
+        </button>
+        <button className="button button--round" onClick={this.handleDelete}>
+          X
+        </button>
       </p>
     </div>
   );
