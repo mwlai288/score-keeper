@@ -11,6 +11,11 @@ class App extends Component {
         <h1>Score Keep</h1>
         <div>
           <Form />
+          {this.props.players.length === 0 ? (
+            <h1>Add new player to begin.</h1>
+          ) : (
+            ''
+          )}
           {this.props.players.map(player => {
             return <PlayerList player={player} key={player._id} />;
           })}
@@ -22,6 +27,8 @@ class App extends Component {
 
 export default withTracker(() => {
   return {
-    players: Players.find({}).fetch()
+    //  sort object get passed on the options object available on .find({}). add second argument, options object,
+    //  specify sort method and use key and give 1 or -1 for ascending or descending.
+    players: Players.find({}, { sort: { score: -1 } }).fetch()
   };
 })(App);

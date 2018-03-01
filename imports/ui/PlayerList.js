@@ -7,7 +7,6 @@ const PlayerList = ({ player }) => {
       _id: player._id
     });
   };
-
   handleIncrement = () => {
     Players.update({ _id: player._id }, { $inc: { score: 1 } });
   };
