@@ -27,8 +27,6 @@ class App extends Component {
 
 export default withTracker(() => {
   return {
-    //  sort object get passed on the options object available on .find({}). add second argument, options object,
-    //  specify sort method and use key and give 1 or -1 for ascending or descending.
     players: Players.find({}, { sort: { score: -1 } }).fetch()
   };
 })(App);
