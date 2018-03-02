@@ -4,6 +4,7 @@ import Players from '../api/players';
 
 import Form from './Form';
 import PlayerList from './PlayerList';
+
 class App extends Component {
   render() {
     return (
@@ -16,16 +17,7 @@ class App extends Component {
         <div>
           <div className="wrapper">
             <Form />
-            {this.props.players.length === 0 ? (
-              <div className="item">
-                <p className="item__message">Add new player to begin.</p>
-              </div>
-            ) : (
-              ''
-            )}
-            {this.props.players.map(player => {
-              return <PlayerList player={player} key={player._id} />;
-            })}
+            <PlayerList players={this.props.players} />
           </div>
         </div>
       </div>

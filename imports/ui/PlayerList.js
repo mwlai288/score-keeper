@@ -1,50 +1,31 @@
-import React from 'react';
-import Players from '../api/players';
+import React, { Component } from 'react';
+import FlipMove from 'react-flip-move';
 
-const PlayerList = ({ player }) => {
-  handleDelete = () => {
-    Players.remove({
-      _id: player._id
-    });
-  };
-  handleIncrement = () => {
-    Players.update({ _id: player._id }, { $inc: { score: 1 } });
-  };
-  handleDecrement = () => {
-    Players.update({ _id: player._id }, { $inc: { score: -1 } });
-  };
-  return (
-    <div className="item">
-      <div className="player">
-        <div>
-          <h3 className="player__name">{player.name}</h3>
-          <p className="player__stats"> {player.score} point(s).</p>
+import Player from './Player';
+
+class PlayerList extends Component {
+  renderPlayers() {
+    if (this.props.players.length === 0) {
+      return (
+        <div className="item">
+          <p className="item__message">Add player to get started!</p>
         </div>
-        <div>
-          <div className="player__actions">
-            <button
-              className="button button--round"
-              onClick={this.handleIncrement}
-            >
-              +1
-            </button>
-            <button
-              className="button button--round"
-              onClick={this.handleDecrement}
-            >
-              -1
-            </button>
-            <button
-              className="button button--round"
-              onClick={this.handleDelete}
-            >
-              X
-            </button>
-          </div>
-        </div>
+      );
+    } else {
+      return this.props.players.map(player => {
+        return <Player key={player._id} player={player} />;
+      });
+    }
+  }
+  render() {
+    return (
+      <div>
+        <FlipMove maintainContainerHeight={true}>
+          {this.renderPlayers()}
+        </FlipMove>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default PlayerList;
